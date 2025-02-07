@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BMI_CALCULATOR.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="BMI Calculator" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout HorizontalOptions="Fill" Spacing="190" >
+                <Border Stroke="Black" StrokeThickness="2" Padding="10" >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40,40,40,40" />
+                    </Border.StrokeShape>
+                    <StackLayout x:Name="MaleImageLayout">
+                        <Image Source="male.png" WidthRequest="200" HeightRequest="200">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                              NumberOfTapsRequired="1" Tapped="MaleTapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label FontSize="Large" HorizontalOptions="Center" Text="Male" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Border>
+
+                <Border Stroke="Black" StrokeThickness="2" Padding="10" >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40,40,40,40" />
+                    </Border.StrokeShape>
+                    <StackLayout  x:Name="FemaleImageLayout">
+                        <Image Source="female.png" WidthRequest="200" HeightRequest="200">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                              NumberOfTapsRequired="1"  Tapped="FemaleTapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label FontSize="Large" HorizontalOptions="Center" Text="Female" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Border>
+
+            </HorizontalStackLayout>
+
+            <Label Text="Height (inches)" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" />
+            <Slider Maximum="100" Value="50" ValueChanged="HeightValueChanged"/>
+            <Label Text="50" x:Name="HeightLabel" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="Weight (lbs)" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" />
+            <Slider Maximum="300" Value="90" ValueChanged="WeightValueChanged"/>
+            <Label Text="90" x:Name="WeightLabel" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+
+            <Button Text="Calculate Your BMI!"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="CalculateBMI" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
