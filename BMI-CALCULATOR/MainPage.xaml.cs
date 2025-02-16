@@ -3,6 +3,8 @@
     public partial class MainPage : ContentPage
     {
         string gender = "";
+        string ResultLabel = "";
+        string recommendations = "";
 
         public MainPage()
         {
@@ -18,7 +20,7 @@
         void WeightValueChanged(object sender, ValueChangedEventArgs args)
         {
             double value = args.NewValue;
-            WeightLabel.Text = Math.Ceiling(value).ToString();
+            WeightLabel.Text =  Math.Ceiling(value).ToString();
         }
         void MaleTapped(object sender, TappedEventArgs args)
         {
@@ -34,34 +36,33 @@
             MaleImageLayout.Opacity = 0.3;
         }
 
-        private void CalculateBMI(object sender, EventArgs e)
+
+        async private void CalculateBMI(object sender, EventArgs e)
         {
-            
-            
-            var height = Int32.Parse(HeightLabel.Text);
-            var weight = Int32.Parse(WeightLabel.Text);
-            var bmi = Math.Floor((weight / Math.Pow(height, 2))*703);
-            var ResultLabel = "";
+            var height = Int32.Parse(this.HeightLabel.Text);
+            var weight = Int32.Parse(this.WeightLabel.Text);
+            var bmi = Math.Floor((weight / Math.Pow(height, 2)) * 703);
             if (gender == "Male")
             {
                 if (bmi < 18.5)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Underweight \n Reccomendations: Increase calorie intake with nutrient-rich foods (e.g., nuts, lean protein, whole grains). Incorporate strength training to build muscle mass. Consult a nutritionist if needed. ";
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Underweight \n ";
+                    recommendations = "Reccomendations: Increase calorie intake with nutrient-rich foods (e.g., nuts, lean protein, whole grains). Incorporate strength training to build muscle mass. Consult a nutritionist if needed.";
                 }
                 else if (bmi >= 18.5 && bmi < 25)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Statuss: Normal Weight \n Reccomendations:  Maintain a balanced diet with proteins, healthy fats, and fiber. Stay physically active with at least 150 minutes of exercise per week. Keep\r\nregular check-ups to monitor overall health.";
-
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Statuss: Normal Weight \n ";
+                    recommendations = "Reccomendations:  Maintain a balanced diet with proteins, healthy fats, and fiber. Stay physically active with at least 150 minutes of exercise per week. Keep\r\nregular check-ups to monitor overall health.";
                 }
                 else if (bmi >= 25 && bmi < 30)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Overweight \n Reccomendations: Reduce processed foods and focus on portion control. Engage in regular aerobic exercises (e.g., jogging, swimming) and strength training. Drink\r\nplenty of water and track your progress. ";
-
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Overweight \n ";
+                    recommendations = "Reccomendations: Reduce processed foods and focus on portion control. Engage in regular aerobic exercises (e.g., jogging, swimming) and strength training. Drink\r\nplenty of water and track your progress. ";
                 }
                 else if (bmi >= 30)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Obese \n Reccomendations: Consult a doctor for personalized guidance. Start with low-impact exercises (e.g., walking, cycling). Follow a structured weight-loss meal plan and consider behavioral therapy for lifestyle changes. Avoid sugary\r\ndrinks and maintain a consistent sleep schedule.";
-
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Obese \n ";
+                    recommendations = "Reccomendations: Consult a doctor for personalized guidance. Start with low-impact exercises (e.g., walking, cycling). Follow a structured weight-loss meal plan and consider behavioral therapy for lifestyle changes. Avoid sugary\r\ndrinks and maintain a consistent sleep schedule.";
                 }
                 else
                 {
@@ -72,21 +73,26 @@
             {
                 if (bmi < 18)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Underweight \n Reccomendations: Increase calorie intake with nutrient-rich foods (e.g., nuts, lean protein, whole grains). Incorporate strength training to build muscle mass. Consult a nutritionist if needed. ";
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Underweight \n";
+                    recommendations = "Reccomendations: Increase calorie intake with nutrient-rich foods (e.g., nuts, lean protein, whole grains). Incorporate strength training to build muscle mass. Consult a nutritionist if needed.";
+
                 }
                 else if (bmi >= 18 && bmi < 24)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Normal Weight \n Reccomendations:  Maintain a balanced diet with proteins, healthy fats, and fiber. Stay physically active with at least 150 minutes of exercise per week. Keep\r\nregular check-ups to monitor overall health.";
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Normal Weight \n ";
+                    recommendations = "Reccomendations:  Maintain a balanced diet with proteins, healthy fats, and fiber. Stay physically active with at least 150 minutes of exercise per week. Keep\r\nregular check-ups to monitor overall health.";
 
                 }
                 else if (bmi >= 24 && bmi < 29)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Overweight \n Reccomendations: Reduce processed foods and focus on portion control. Engage in regular aerobic exercises (e.g., jogging, swimming) and strength training. Drink\r\nplenty of water and track your progress. ";
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Overweight \n  ";
+                    recommendations = "Reccomendations: Reduce processed foods and focus on portion control. Engage in regular aerobic exercises (e.g., jogging, swimming) and strength training. Drink\r\nplenty of water and track your progress. ";
 
                 }
                 else if (bmi >= 29)
                 {
-                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Obese \n Reccomendations: Consult a doctor for personalized guidance. Start with low-impact exercises (e.g., walking, cycling). Follow a structured weight-loss meal plan and consider behavioral therapy for lifestyle changes. Avoid sugary\r\ndrinks and maintain a consistent sleep schedule.";
+                    ResultLabel = $" Gender: {gender} \n  BMI: {bmi.ToString()} Status: Obese \n ";
+                    recommendations = "Reccomendations: Consult a doctor for personalized guidance. Start with low-impact exercises (e.g., walking, cycling). Follow a structured weight-loss meal plan and consider behavioral therapy for lifestyle changes. Avoid sugary\r\ndrinks and maintain a consistent sleep schedule.";
 
                 }
                 else
@@ -95,9 +101,11 @@
                 }
             }
 
-            DisplayAlert("BMI Calculator", ResultLabel, "OK");
-
+            await Navigation.PushAsync(new BMIResults(ResultLabel, recommendations));
         }
+
+  
+   
     }
 
 }

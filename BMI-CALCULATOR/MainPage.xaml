@@ -41,6 +41,7 @@
                 </Border>
 
             </HorizontalStackLayout>
+            
 
             <Label Text="Height (inches)" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" />
             <Slider Maximum="100" Value="50" ValueChanged="HeightValueChanged"/>
@@ -48,6 +49,8 @@
             <Label Text="Weight (lbs)" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" />
             <Slider Maximum="300" Value="90" ValueChanged="WeightValueChanged"/>
             <Label Text="90" x:Name="WeightLabel" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+
+
 
             <Button Text="Calculate Your BMI!"
                 VerticalOptions="Center"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BMI_CALCULATOR.HealthRecommendations"
+             Title="HealthRecommendations">
+    <VerticalStackLayout>
+        <Label
+            x:Name="recommendationsLabel"
+            Text="."
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button Text="User Input Page"
+VerticalOptions="Center"
+HorizontalOptions="Center"
+Clicked="NavigateToUserInput" />
+
+        <Button Text="Bmi Results"
+VerticalOptions="Center"
+HorizontalOptions="Center"
+Clicked="NavigateBack" />
+    </VerticalStackLayout>
+</ContentPage>
